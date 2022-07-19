@@ -8,6 +8,7 @@ namespace StudentsDB.Controllers
 {
     public class StudentController : Controller
     {
+        const int pageSize = 5;
         private readonly StudentsContext _context;
 
         public StudentController(StudentsContext context)
@@ -19,8 +20,6 @@ namespace StudentsDB.Controllers
         {
             if (id != null)
             {
-                int pageSize = 5;
-
                 //фильтрация
                 IQueryable<Student> students = _context.Students.Where(p => p.GroupId == id);
 
