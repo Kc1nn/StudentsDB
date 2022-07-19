@@ -27,12 +27,6 @@
                asp-route-name="@(Model.FilterGroupsViewModel.Name)"
                asp-route-year="@(Model.FilterGroupsViewModel.Year)">Название</a>
          </th>
-         <th>
-             <a asp-action="Index"
-               asp-route-sortOrder="@(Model.SortGroupsViewModel.YearSort)"
-               asp-route-name="@(Model.FilterGroupsViewModel.Name)"
-               asp-route-year="@(Model.FilterGroupsViewModel.Year)">Год</a>
-         </th>
          <th></th>
          <th></th>
          <th></th>
@@ -40,8 +34,7 @@
     @foreach (var item in Model.Groups)
     {
         <tr>
-            <td>@item.Name</td>
-            <td>@item.Year</td>
+            <td>@item.Name-@item.Year</td>
             <td>
                 <a asp-action="Index" asp-controller="Student" asp-route-id="@item.Id">Список студентов</a>
             </td>

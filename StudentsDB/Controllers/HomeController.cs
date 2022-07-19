@@ -34,16 +34,10 @@ namespace StudentsDB.Controllers
             switch (sortOrder)
             {
                 case GroupsSortState.NameDesc:
-                    groups = groups.OrderByDescending(s => s.Name);
-                    break;
-                case GroupsSortState.YearAsc:
-                    groups = groups.OrderBy(s => s.Year);
-                    break;
-                case GroupsSortState.YearDesc:
-                    groups = groups.OrderByDescending(s => s.Year);
+                    groups = groups.OrderByDescending(s => s.Name).ThenByDescending(s => s.Year);
                     break;
                 default:
-                    groups = groups.OrderBy(s => s.Name);
+                    groups = groups.OrderBy(s => s.Name).ThenBy(s => s.Year);
                     break;
             }
 
