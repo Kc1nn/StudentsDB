@@ -1,0 +1,20 @@
+﻿@model StudentsDB.Models.StudentModels.Student
+ 
+<h2>Редактирование студента</h2>
+<form asp-action="edit" asp-controller="student" asp-route-id="@Model.Id" asp-route-GroupId="@Model.GroupId">
+    <p>
+        <label asp-for="Name">Имя</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="Surname">Фамилия</label><br />
+        <input type="text" asp-for="Surname" />
+    </p>
+    <p>
+        <label asp-for="Age">Возраст</label><br />
+        <input type="number" asp-for="Age" />
+    </p>
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+</form>
