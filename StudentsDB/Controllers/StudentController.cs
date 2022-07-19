@@ -74,7 +74,7 @@ namespace StudentsDB.Controllers
                 if (viewModel.Group != null && viewModel.Students != null)
                     return View(viewModel);
             }
-            return NotFound();
+            return NotFound("Группа, список студентов которой вы пытаетесь получить, не найдена");
         }
 
         public IActionResult Create(int id)
@@ -107,7 +107,7 @@ namespace StudentsDB.Controllers
                 }
             }
 
-            return NotFound();
+            return NotFound("Студент, которого вы пытаетесь удалить, не найден");
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -119,7 +119,7 @@ namespace StudentsDB.Controllers
                     return View(student);
             }
 
-            return NotFound();
+            return NotFound("Студент, которого вы пытаетесь изменить, не найден");
         }
 
         [HttpPost]

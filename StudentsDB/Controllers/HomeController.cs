@@ -89,7 +89,7 @@ namespace StudentsDB.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
-            return NotFound();
+            return NotFound("Группа, которую вы пытаетесь удалить, не найдена");
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -100,7 +100,7 @@ namespace StudentsDB.Controllers
                 if (group != null) return View(group);
             }
 
-            return NotFound();
+            return NotFound("Группа, которую вы пытаетесь изменить, не найдена");
         }
 
         [HttpPost]
