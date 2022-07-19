@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StudentsDB.Models;
 using StudentsDB.Models.GroupModels;
+using StudentsDB.Models.StudentModels;
 
 namespace StudentsDB.Controllers
 {
@@ -83,6 +84,13 @@ namespace StudentsDB.Controllers
                 Group? group = await _context.Groups.FirstOrDefaultAsync(p => p.Id == id);
                 if (group != null)
                 {
+                    //Если в группе есть студенты - не выполняем запрос
+                    List<Student> students = await _context.Students.Where(p => p.GroupId == id).ToListAsync();
+                    if(students.Count != 0)
+                    {
+                        return StatusCode(412, "Ошибка! Нельзя удалить группу, в которой есть студенты");
+                    }
+
                     _context.Groups.Remove(group);
                     await _context.SaveChangesAsync();
 
@@ -96,6 +104,13 @@ namespace StudentsDB.Controllers
         {
             if (id != null)
             {
+                //Если в группе есть студенты - не выполняем запрос
+                List<Student> students = await _context.Students.Where(p => p.GroupId == id).ToListAsync();
+                if (students.Count != 0)
+                {
+                    return StatusCode(412, "Ошибка! Нельзя изменить группу, в которой есть студенты");
+                }
+
                 Group? group = await _context.Groups.FirstOrDefaultAsync(p => p.Id == id);
                 if (group != null) return View(group);
             }
