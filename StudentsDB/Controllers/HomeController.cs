@@ -80,7 +80,7 @@ namespace StudentsDB.Controllers
                 {
                     //Если в группе есть студенты - не выполняем запрос
                     List<Student> students = await _context.Students.Where(p => p.GroupId == id).ToListAsync();
-                    if(students.Count != 0)
+                    if(students.Any())
                     {
                         return StatusCode(412, "Ошибка! Нельзя удалить группу, в которой есть студенты");
                     }
@@ -100,7 +100,7 @@ namespace StudentsDB.Controllers
             {
                 //Если в группе есть студенты - не выполняем запрос
                 List<Student> students = await _context.Students.Where(p => p.GroupId == id).ToListAsync();
-                if (students.Count != 0)
+                if (students.Any())
                 {
                     return StatusCode(412, "Ошибка! Нельзя изменить группу, в которой есть студенты");
                 }
