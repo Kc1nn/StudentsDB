@@ -19,6 +19,12 @@
   
     <input type="submit" value="Фильтр" />
 </form>
+<p>
+    Количество строк:
+    <a asp-action="Index" asp-route-pageSize = "5">5</a>
+    <a asp-action="Index" asp-route-pageSize = "10">10</a>
+    <a asp-action="Index" asp-route-pageSize = "15">15</a>
+</p>
 <table class="table">
      <tr>
          <th>
