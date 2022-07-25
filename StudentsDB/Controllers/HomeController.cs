@@ -8,7 +8,6 @@ namespace StudentsDB.Controllers
 {
     public class HomeController : Controller
     {
-        private int pageSize;
         private readonly StudentsContext _context;
 
         public HomeController(StudentsContext context)
@@ -16,10 +15,8 @@ namespace StudentsDB.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(string name, string year, int page = 1, GroupsSortState sortOrder = GroupsSortState.NameAsc, int pageSize = 5)
+        public async Task<IActionResult> Index(string name, string year, int page = 1, int pageSize = 5, GroupsSortState sortOrder = GroupsSortState.NameAsc)
         {
-            this.pageSize = pageSize;
-
             //фильтрация
             IQueryable<Group> groups = _context.Groups;
 
